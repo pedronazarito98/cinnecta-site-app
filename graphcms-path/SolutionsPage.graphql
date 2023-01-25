@@ -1,0 +1,182 @@
+fragment SolutionsPage on SolutionsPage {
+  stage
+  publishedAt
+  updatedAt
+  createdAt
+  remoteId: id
+  slug
+  bannerSolution {
+    ... on Banner {
+      stage
+      id
+      titleBanner
+      subTitleBanner
+      bodyBanner {
+        ... on RichText {
+          raw
+          html
+          markdown
+          text
+        }
+      }
+      textAlt
+      imageBanner {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  infoCard {
+    ... on InfoCard {
+      stage
+      id
+      titleInfo
+      bodyInfo
+      imageInfo {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  depositionsCard {
+    ... on Deposition {
+      stage
+      id
+      bodyDeposition
+      nameAgent
+      officeAgent
+      nameCompany
+      textAlt
+      imageAgent {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+      logoCompany {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  productCinnecta {
+    ... on Product {
+      stage
+      id
+      nameProduct
+      descriptionProduct
+      reverseCard
+      redirectButton
+      labelButton
+      bodyProduct {
+        ... on RichText {
+          raw
+          html
+          markdown
+          text
+        }
+      }
+      imageProduct {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  technologiesCard {
+    ... on InfoCard {
+      stage
+      id
+      titleInfo
+      bodyInfo
+      imageInfo {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  lgpdSolutions {
+    ... on Product {
+      stage
+      id
+      nameProduct
+      descriptionProduct
+      reverseCard
+      redirectButton
+      labelButton
+      bodyProduct {
+        ... on RichText {
+          raw
+          html
+          markdown
+          text
+        }
+      }
+      imageProduct {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  exclusiveFeature {
+    ... on ExclusiveFeature {
+      stage
+      id
+      title
+      description
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  scheduledIn {
+    ... on ScheduledOperation {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.swiper-button-next::after {
+    color: #fff;
+    font-size: 30px;
+}
+
+.swiper-button-prev::after {
+    color: #fff;
+    font-size: 30px;
+}
+
+
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+    margin-bottom: 48px !important;
+}

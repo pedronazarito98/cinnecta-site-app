@@ -1,0 +1,97 @@
+fragment ScheduledOperation on ScheduledOperation {
+  stage
+  rawPayload
+  errorMessage
+  description
+  publishedAt
+  updatedAt
+  createdAt
+  remoteId: id
+  release {
+    ... on ScheduledRelease {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  status
+  affectedDocuments {
+    ... on AboutPage {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+      stage
+    }
+    ... on Author {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on CareersPage {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on ContactPage {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on Homepage {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on PagePost {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on Post {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on PrivacyPage {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on Seo {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on SolutionsPage {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+}

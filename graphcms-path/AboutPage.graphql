@@ -1,0 +1,173 @@
+fragment AboutPage on AboutPage {
+  stage
+  publishedAt
+  updatedAt
+  createdAt
+  remoteId: id
+  slug
+  richText {
+    ... on RichText {
+      raw
+      html
+      markdown
+      text
+    }
+  }
+  bannerAbout {
+    ... on Banner {
+      stage
+      id
+      titleBanner
+      subTitleBanner
+      bodyBanner {
+        ... on RichText {
+          raw
+          html
+          markdown
+          text
+        }
+      }
+      textAlt
+      imageBanner {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  timelineContent {
+    ... on TimeLine {
+      stage
+      id
+      dateTimeline
+      descriptionTimeline
+      directionTimeline
+      illustrationTimeline {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  depositionCompanies {
+    ... on DepositionCompanie {
+      stage
+      id
+      titleDeposition
+      bodyDeposition {
+        ... on RichText {
+          raw
+          html
+          markdown
+          text
+        }
+      }
+      imageCompanie {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  valuesCinnecta {
+    ... on ValuesCinnecta {
+      stage
+      id
+      titleValues
+      descriptionValues
+      iconValues {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  cultureCinnecta {
+    ... on CultureCinnecta {
+      stage
+      id
+      titleCulture
+      descriptionCulture
+      iconCulture {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  newsAbout {
+    ... on NewsAbout {
+      stage
+      id
+      linkArticle
+      imageNews {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  cardCinnecta {
+    ... on CardCinnecta {
+      stage
+      id
+      linkId
+      numberId
+      descriptionId
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  imageCulture {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+      stage
+    }
+  }
+  scheduledIn {
+    ... on ScheduledOperation {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+}
