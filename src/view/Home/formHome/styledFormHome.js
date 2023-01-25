@@ -70,6 +70,10 @@ export const WrapperInput = styled.div`
   width: 100%;
   max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : "305px")};
   margin: 8px;
+
+  @media (max-width: 859px) {
+    justify-content: center;
+  }
 `;
 
 export const CapsuleField = styled.div`

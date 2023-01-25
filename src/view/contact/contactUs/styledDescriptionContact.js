@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerContato = styled.section`
   width: 100%;
-  /* max-width: 1170px; */
+  max-width: 76.25rem;
 
   display: flex;
   flex-direction: row;
@@ -10,11 +10,11 @@ export const ContainerContato = styled.section`
   justify-content: space-evenly;
   align-items: flex-start;
 
-  margin: 64px auto;
-  padding: 24px;
+  margin: 4rem auto;
+  padding: 1.5rem;
 
-  @media (max-width: 768px) {
-    margin: 14px auto;
+  @media (max-width: 48rem) {
+    margin: 0.875rem auto;
     justify-content: center;
   }
 `;

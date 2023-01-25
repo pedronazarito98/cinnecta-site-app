@@ -1,5 +1,5 @@
 import React from "react";
-import { ChatBotStyled } from "./StyledWppButton";
+import { ChatBotStyled } from "./StyledChat";
 import { ThemeProvider } from "styled-components";
 import imgBot from "../../assets/images/icon-cinnecta.svg";
 
@@ -18,7 +18,7 @@ const theme = {
   userFontColor: "#FFFFFF",
 };
 
-export const WhatsAppButton = () => {
+export const Chat = () => {
   const GoToComercial = () => {
     setTimeout(() => {
       window.open(

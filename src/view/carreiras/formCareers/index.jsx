@@ -115,6 +115,7 @@ export const FormCareers = () => {
     { optionValue: "Customer Success", optionLabel: "Customer Success" },
     { optionValue: "Engenharia de Dados", optionLabel: "Engenharia de Dados" },
     { optionValue: "Marketing", optionLabel: "Marketing" },
+    { optionValue: "Produto", optionLabel: "Produto" },
     { optionValue: "Pessoas & Cultura", optionLabel: "Pessoas & Cultura" },
   ];
 

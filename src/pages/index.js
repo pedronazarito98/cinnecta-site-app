@@ -1,14 +1,14 @@
 import * as React from "react";
 
+import { Seo } from "../components/Seo";
 import { Banner } from "../view/Home/banner";
 import Layout from "../templates/MainTemplate";
+import { useHome } from "../hooks/methods/home";
 import { StampsView } from "../view/Home/stamps";
 import { ProductsView } from "../view/Home/products";
 import { ServicesView } from "../view/Home/serviços";
 import { CompaniesView } from "../view/Home/companies";
 import { DepositionsView } from "../view/Home/depositions";
-import { Seo } from "../components/Seo";
-import { useHome } from "../hooks/methods/home";
 
 export default function Home() {
   const { data, isSuccess } = useHome();

@@ -1,19 +1,15 @@
 import React from "react";
+import { StyledPrivacyText } from "./styledPrivacyText";
+import { usePrivacy } from "../../../hooks/methods/privacy";
 
 export function PrivacyText() {
-  // const { cmsPrivacyPage } = useStaticQuery(graphql`
-  //   {
-  //     cmsPrivacyPage {
-  //       privacyText {
-  //         html
-  //       }
-  //     }
-  //   }
-  // `);
-  // const { privacyText } = cmsPrivacyPage;
+  const { data, isSuccess } = usePrivacy();
 
   return (
-    <h1>Privacy</h1>
-    // <StyledPrivacyText dangerouslySetInnerHTML={{ __html: privacyText.html }} />
+    <StyledPrivacyText
+      dangerouslySetInnerHTML={{
+        __html: isSuccess && data?.privacyPage?.privacyText.html,
+      }}
+    />
   );
 }

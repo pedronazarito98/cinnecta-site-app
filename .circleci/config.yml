@@ -1,0 +1,136 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: cimg/node:16.13.2-browsers
+    working_directory: ~/src
+    steps:
+      - checkout
+      - run:
+          name: Install NPM packages using Yarn
+          command: yarn install --ignore-engines
+      - run:
+          name: Build project
+          command: yarn build
+  build-staging:
+    docker:
+      - image: cimg/node:16.13.2-browsers
+    working_directory: ~/src
+    steps:
+      - checkout
+      - run:
+          name: Install NPM packages using Yarn
+          command: yarn install --ignore-engines
+      - run:
+          name: Build project
+          command: yarn build
+      - persist_to_workspace:
+          root: ~/src
+          paths:
+            - public
+            - package.json
+  deploy-staging:
+    docker:
+      - image: circleci/python:3.6.2-stretch-browsers
+    working_directory: ~/src
+    steps:
+      - attach_workspace:
+          at: ~/src
+      - run:
+          name: Install awscli
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            sudo pip install awscli
+      - run:
+          name: Create AWS credentials
+          command: |
+            mkdir ~/.aws
+            touch ~/.aws/config
+            chmod 600 ~/.aws/config
+            echo "[default]" > ~/.aws/config
+            echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
+            echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+      - run:
+          name: Deploy to S3
+          command: aws s3 sync build s3://cinecta-site/ --delete --cache-control max-age=0
+  # build-prod:
+  #   docker:
+  #     - image: cimg/node:16.13.1-browsers
+  #   working_directory: ~/app
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Install NPM packages using Yarn
+  #         command: yarn install --ignore-engines
+  #     - run:
+  #         name: Set constants for prod environment
+  #         command: cp src/app/config/constants-prod.js src/app/config/constants.js
+  #     - run:
+  #         name: Build project
+  #         command: yarn build
+  #     - persist_to_workspace:
+  #         root: ~/app
+  #         paths:
+  #           - build
+  #           - package.json
+  # deploy-prod:
+  #   docker:
+  #     - image: circleci/python:3.6.2-stretch-browsers
+  #   working_directory: ~/app
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/app
+  #     - run:
+  #         name: Install awscli
+  #         command: |
+  #           python3 -m venv venv
+  #           . venv/bin/activate
+  #           sudo pip install awscli
+  #     - run:
+  #         name: Create AWS credentials
+  #         command: |
+  #           mkdir ~/.aws
+  #           touch ~/.aws/config
+  #           chmod 600 ~/.aws/config
+  #           echo "[default]" > ~/.aws/config
+  #           echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
+  #           echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+  #     - run:
+  #         name: Deploy to S3
+  #         command: aws s3 sync build s3://ltv.cinnecta.com/ --delete --cache-control max-age=0
+workflows:
+  version: 2
+  build-commit:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - staging
+                # - prod
+  build-deploy-staging:
+    jobs:
+      - build-staging:
+          filters:
+            branches:
+              only: staging
+      - deploy-staging:
+          requires:
+            - build-staging
+          filters:
+            branches:
+              only: staging
+  # build-deploy-prod:
+  #   jobs:
+  #     - build-prod:
+  #         filters:
+  #           branches:
+  #             only: prod
+  #     - deploy-prod:
+  #         requires:
+  #           - build-prod
+  #         filters:
+  #           branches:
+  #             only: prod

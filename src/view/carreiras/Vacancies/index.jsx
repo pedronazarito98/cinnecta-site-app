@@ -17,7 +17,7 @@ export const Vacancies = ({ data, noVacancy }) => {
         <WrapperCards>
           {data?.length > 0 ? (
             data?.map(({ area, jobTitle, descriptionJob }) => (
-              <CardVacancies>
+              <CardVacancies key={jobTitle}>
                 <span>{area}</span>
                 <h1>{jobTitle}</h1>
                 <p>{descriptionJob}</p>

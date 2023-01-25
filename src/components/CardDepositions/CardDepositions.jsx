@@ -6,6 +6,7 @@ import {
   IconImage,
   ImageCompanie,
   InfoDescription,
+  WrapperContent,
   WrapperText,
 } from "./StyledCardDepositions";
 
@@ -18,24 +19,26 @@ export function CardDepositions({
 }) {
   return (
     <ContainerDeposition>
-      <ImageCompanie src={company} alt={name} loading="eager" />
+      <WrapperContent>
+        <ImageCompanie src={company} alt={name} loading="eager" />
 
-      <ContainerContent>
-        <InfoDescription>
-          <span>“</span>
-          <p>{depoiment}</p>
-        </InfoDescription>
-        <FooterCard>
-          <IconImage>
-            <img src={imgDepositions} alt="imgDeposition" loading="eager" />
-          </IconImage>
-          <WrapperText>
-            <img src={company} alt={name} loading="eager" />
-            <p>{name}</p>
-            <span> {office} </span>
-          </WrapperText>
-        </FooterCard>
-      </ContainerContent>
+        <ContainerContent>
+          <InfoDescription>
+            <span>“</span>
+            <p>{depoiment}</p>
+          </InfoDescription>
+          <FooterCard>
+            <IconImage>
+              <img src={imgDepositions} alt="imgDeposition" loading="eager" />
+            </IconImage>
+            <WrapperText>
+              <img src={company} alt={name} loading="eager" />
+              <p>{name}</p>
+              <span> {office} </span>
+            </WrapperText>
+          </FooterCard>
+        </ContainerContent>
+      </WrapperContent>
     </ContainerDeposition>
   );
 }

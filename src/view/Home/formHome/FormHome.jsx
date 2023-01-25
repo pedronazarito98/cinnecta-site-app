@@ -258,7 +258,7 @@ export function Formhome({ myRef }) {
     return type?.map(({ name, label, placeholder }) => {
       if (name === "phone") {
         return (
-          <CapsuleField>
+          <CapsuleField key={label}>
             <label htmlFor={name}>{label}</label>
             <InputMask
               mask="(99)99999-9999"
@@ -276,7 +276,7 @@ export function Formhome({ myRef }) {
 
       if (name === "company") {
         return (
-          <CapsuleField>
+          <CapsuleField key={label}>
             <label htmlFor={name}>{label}</label>
             <Input
               {...register(name, { required: true })}
@@ -297,7 +297,7 @@ export function Formhome({ myRef }) {
   const selectField = (type) => {
     return type?.map(({ name, label }) => {
       return (
-        <CapsuleField>
+        <CapsuleField key={label}>
           <label htmlFor={name}>{label}</label>
           <Select {...register(name, { required: true })}>
             {optionsSegmentoEmpresa.map(({ optionLabel, optionValue }) => (
@@ -321,7 +321,7 @@ export function Formhome({ myRef }) {
         {verifyLabel[0]?.map(({ label, name, placeholder }) => {
           return (
             <>
-              <CapsuleField>
+              <CapsuleField key={label}>
                 <label htmlFor={name}>{label}</label>
                 <Input
                   {...register(name, { required: true })}

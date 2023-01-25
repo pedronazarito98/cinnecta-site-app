@@ -19,7 +19,7 @@ export const Benefits = ({ benefitsCinnecta, benefitsContCinnecta }) => {
           <CardValues key={titleValues}>
             <img src={iconCheck} alt="icon check" loading="eager" />
             <ContentValues>
-              <span>{titleValues}</span>
+              <span key={titleValues}>{titleValues}</span>
               {descriptionValues && <p>{descriptionValues}</p>}
             </ContentValues>
           </CardValues>

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ContainerDeposition = styled.div`
   width: 100%;
-  /* max-width: 78rem; */
   margin: 0 auto;
   height: 380px;
   background-color: var(--blue-40);
@@ -15,7 +14,13 @@ export const ContainerDeposition = styled.div`
     height: 470px;
   }
 `;
-
+export const WrapperContent = styled.div`
+  width: 100%;
+  max-width: 76.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
 export const ImageCompanie = styled.img`
   height: 80px;
   width: auto;
@@ -101,7 +106,8 @@ export const WrapperText = styled.div`
     font-size: 18px;
     font-weight: bold;
     font-family: "Raleway", sans-serif;
-    color: ${({ colorText }) => colorText === "blue" && "var(--blue-50)!important;"};
+    color: ${({ colorText }) =>
+      colorText === "blue" && "var(--blue-50)!important;"};
   }
 
   img {

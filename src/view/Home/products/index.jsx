@@ -39,7 +39,7 @@ export function ProductsView({ data }) {
       )}
       <ContainerForm ref={formRef}>
         <Title label="Saiba como impulsionar o ticket dos seus melhores clientes" />
-        <Formhome />
+        <Formhome key="id" />
       </ContainerForm>
     </ContainerProducts>
   );

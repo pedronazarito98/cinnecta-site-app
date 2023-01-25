@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ChatBot from "react-simple-chatbot";
 
-export const StyledWppButton = styled.a`
+export const StyledWppButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
